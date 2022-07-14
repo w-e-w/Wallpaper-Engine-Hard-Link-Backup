@@ -1,0 +1,3 @@
+[submodule "bulk-directory-link-lib"]
+	path = bulk-directory-link-lib
+	url = https://github.com/w-e-w/bulk-directory-link-lib.git
