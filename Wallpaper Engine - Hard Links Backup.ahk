@@ -1,6 +1,6 @@
 ﻿#NoEnv
 #Persistent
-;#NoTrayIcon
+#NoTrayIcon
 #SingleInstance, force
 SetWorkingDir %A_ScriptDir%
 
@@ -17,6 +17,9 @@ If version_change {
 
 ; load configs.ini
 #Include, load configs.ahk
+If (enable_tray_icon){
+    Menu, Tray, Icon
+}
 
 ; start monitoring wallppaper engine
 cheak_wpe_ui_exist()

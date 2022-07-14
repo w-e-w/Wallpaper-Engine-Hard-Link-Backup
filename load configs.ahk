@@ -29,3 +29,6 @@ IniRead, enable_wallpaper_removed_msg, config.ini, ahk_automation, enable_wallpa
 global removed_msg
 IniRead, removed_msg, config.ini, ahk_automation, removed_msg
 removed_msg := RegExReplace(removed_msg, "(?<!(``))``n" , "`n")
+
+global enable_tray_icon
+IniRead, enable_tray_icon, config.ini, ahk_automation, enable_tray_icon
