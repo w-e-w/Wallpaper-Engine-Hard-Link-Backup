@@ -1,10 +1,6 @@
 ﻿# load Compare_File_Info_by_Handle
 . "$PSScriptRoot\Compare_File_Info_by_Handle.ps1"
 
-# get time stamp
-$Script_Start_Time = Get-Date
-$Timestamp = $Script_Start_Time.ToString($Timestamp_Format)
-
 # for every file in $src make a hard link in $dest
 # if alread exist a file at dest, move the exist to conflict_move_dir$move_sub_dir_suffix
 function hard_link_copy {
