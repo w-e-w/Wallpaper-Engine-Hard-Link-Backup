@@ -28,7 +28,6 @@ function hard_link_copy {
             "Move ""$hard_link_path"" to ""$($cmp.FullName)"""
         }
         # make hardlink
-        $($file_path -replace '(?=[\[\]])','`')
         $h = New-Item -Path $hard_link_path -ItemType HardLink -Target $($file_path -replace '(?=[\[\]])','`') -Force
         "Hardlink ""$file_path"" ""$($h.FullName))"""
     }
