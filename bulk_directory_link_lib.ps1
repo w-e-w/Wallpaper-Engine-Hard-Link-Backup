@@ -22,7 +22,6 @@ function hard_link_copy {
         # if $hard_link_path has file, if so move to conflict_move_dir with $move_sub_dir_suffix
         if (path_exist $hard_link_path) {
             $conflict_move_path = "$conflict_move_dir\$([System.IO.Path]::GetFileName($src))$conflict_move_sub_dir_suffix$($file_path.Substring($src.Length))"
-            [System.IO.Path]::GetDirectoryName($conflict_move_path)
             # move the file by createing it's hardlink
             $cmp = New-Item -Path $conflict_move_path -ItemType HardLink -Target $($hard_link_path -replace '(?=[\[\]])','`') -Force
             "Move ""$hard_link_path"" to ""$($cmp.FullName)"""
