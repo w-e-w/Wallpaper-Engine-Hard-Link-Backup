@@ -17,20 +17,28 @@ if A_IsCompiled {
     ; FileInstall
     ; config
     FileInstall, config.ini, config.ini, %version_change%
-    
-    ;libs
+    ; libs
     FileCreateDir, bulk-directory-link-lib
     FileInstall, bulk-directory-link-lib\bulk_directory_link_lib.ps1, bulk-directory-link-lib\bulk_directory_link_lib.ps1, %version_change%
     FileInstall, bulk-directory-link-lib\Compare_File_Info_by_Handle.cs, bulk-directory-link-lib\Compare_File_Info_by_Handle.cs, %version_change%
     FileInstall, bulk-directory-link-lib\Compare_File_Info_by_Handle.ps1, bulk-directory-link-lib\Compare_File_Info_by_Handle.ps1, %version_change%
-
+    ; Wallpaper Engine module
     FileCreateDir, Wallpaper Engine module
     FileInstall, Wallpaper Engine module\Load config.ps1, Wallpaper Engine module\Load config.ps1, %version_change%
     FileInstall, Wallpaper Engine module\Wallpaper Engine module.ps1, Wallpaper Engine module\Wallpaper Engine module.ps1, %version_change%
-    
+
     ;Path setup
     if version_change {
         #Include, path setup.ahk
+    }
+
+    ; backup folder shortcut
+    shortcut_name := "Wallpaper Backup - shortcut.lnk"
+    If Not FileExist(shortcut_name) {
+        IniRead, hardlink_sync, config.ini, wallpaper_backup_path, hardlink_sync
+        hardlink_sync := PathResolveEnv(hardlink_sync)
+        SplitPath, hardlink_sync , , backup_root
+        FileCreateShortcut, %backup_root%, %shortcut_name%
     }
 
     ; start up shortcut
