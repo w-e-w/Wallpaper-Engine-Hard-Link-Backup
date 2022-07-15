@@ -36,7 +36,7 @@ cheak_wpe_ui_exist(){
         WinWaitClose, ahk_exe %wallpaper_engine_ui32_path%
         SetTimer, after_wpe_ui_exit, % -exit_execution_delay
     }
-    SetTimer, cheak_wpe_ui_exist , % -monitor_frequency
+    SetTimer, cheak_wpe_ui_exist , % -monitor_period
 }
 
 after_wpe_ui_exit(){
@@ -46,7 +46,7 @@ after_wpe_ui_exit(){
     FileGetTime, t2 , %trash%
     if (enable_wallpaper_removed_msg and (t1 != t2))
         SetTimer, msg_removed, -1
-    SetTimer, cheak_wpe_ui_exist , % -monitor_frequency
+    SetTimer, cheak_wpe_ui_exist , % -monitor_period
 }
 
 msg_restored(){

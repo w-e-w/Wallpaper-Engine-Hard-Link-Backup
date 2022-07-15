@@ -5,8 +5,8 @@ IniRead, wallpaper_engine_ui32_path, config.ini, ahk_automation, wallpaper_engin
 wallpaper_engine_ui32_path := PathResolveEnv(wallpaper_engine_ui32_path)
 global exit_execution_delay
 IniRead, exit_execution_delay, config.ini, ahk_automation, exit_execution_delay
-global monitor_frequency
-IniRead, monitor_frequency, config.ini, ahk_automation, monitor_frequency
+global monitor_period
+IniRead, monitor_period, config.ini, ahk_automation, monitor_period
 global Log_path
 IniRead, Log_path, config.ini, ahk_automation, Log_path
 
