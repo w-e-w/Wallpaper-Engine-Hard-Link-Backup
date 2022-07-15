@@ -6,5 +6,5 @@
 wallpapers_src_dir_except_comp_dir_move $HardLink_Sync $Workshop_Content_431960 $Trash $Timestamp
 
 # backup wallpapes
-wallpaper_hard_link_copy $Workshop_Content_431960 $HardLink_Sync $Trash $Timestamp
+wallpaper_hard_link_copy $Workshop_Content_431960 $HardLink_Sync $Trash "$Timestamp Conflict"
 
