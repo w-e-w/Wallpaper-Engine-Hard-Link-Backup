@@ -17,7 +17,7 @@ if A_IsCompiled {
     ; FileInstall
     ; config
     FileInstall, config.ini, config.ini, %version_change%
-    ;If version_change {
+    
     ;libs
     FileCreateDir, bulk-directory-link-lib
     FileInstall, bulk-directory-link-lib\bulk_directory_link_lib.ps1, bulk-directory-link-lib\bulk_directory_link_lib.ps1, %version_change%
@@ -27,7 +27,13 @@ if A_IsCompiled {
     FileCreateDir, Wallpaper Engine module
     FileInstall, Wallpaper Engine module\Load config.ps1, Wallpaper Engine module\Load config.ps1, %version_change%
     FileInstall, Wallpaper Engine module\Wallpaper Engine module.ps1, Wallpaper Engine module\Wallpaper Engine module.ps1, %version_change%
-    ;}
+    
+    ;Path setup
+    if version_change {
+        #Include, path setup.ahk
+    }
+
+    ; start up shortcut
     SplitPath, A_ScriptName , , , , ScriptNameNoExt
     shortcut_name := ScriptNameNoExt . " - shortcut.lnk"
     If Not FileExist(shortcut_name) {
