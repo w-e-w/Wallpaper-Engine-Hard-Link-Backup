@@ -16,7 +16,7 @@ function wallpaper_hard_link_copy {
     }
 }
 # for every wallpapers in $src_dir, if it's missing from $compare_dir, then move it to $move_dir/wallper$move_sub_dir_suffix
-function find_extra_wallpaper_move_location {
+function wallpapers_src_dir_except_comp_dir_move {
     param (
         [string]$src_dir,
         [string]$compare_dir,
