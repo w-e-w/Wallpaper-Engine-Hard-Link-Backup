@@ -3,6 +3,8 @@ Preventing Steam from deleting Wallpaper Engine's workshop wallpapers by using h
 
 Solution to Steam deleting wallpapers without warning.
 
+[English](README.md), [繁體中文](README.zh-TW.md), [简体中文](README.zh-CN.md)
+
 the issue is describe on the help page
 https://help.wallpaperengine.io/en/steam/backup.html
 > When wallpapers are deleted from Steam for any reason, Steam will also delete them from your PC. Wallpaper Engine cannot prevent that, but if this is a concern for you, you can make a backup of your wallpapers.
@@ -105,8 +107,7 @@ If the `Hard Link copy` script is executed immediately after the UI closes, all 
 ### Advance mode
 Download
 1. clone this repository
-2. you also need to clone a sub-modules
-3. install AutoHotkey if you wish to automate it
+2. install AutoHotkey if you wish to automate it
    
 Automated mode
 - with Autohotkey run `Wallpaper Engine - Hard Links Backup.ahk`

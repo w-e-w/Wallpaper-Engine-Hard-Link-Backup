@@ -3,6 +3,8 @@ Preventing Steam from deleting Wallpaper Engine's workshop wallpapers by using h
 
 防止Steam刪除壁紙的工具
 
+[English](README.md), [繁體中文](README.zh-TW.md), [简体中文](README.zh-CN.md)
+
 在`疑難排解指南與常見問題集`介紹到一個問題
 https://help.wallpaperengine.io/zh-tw/steam/backup.html
 > 因故刪除 Steam 中的桌布時，Steam 也會將桌布從電腦中刪除。 Wallpaper Engine 無法防止這點，如果會對您造成困擾，您可以備份桌布。
@@ -63,15 +65,13 @@ https://help.wallpaperengine.io/zh-tw/steam/backup.html
   - 若判斷為`"使用者刪除"`壁紙，會將壁紙移動到`移除 (Removed)`資料夾中
     - 可以將`移除 (Removed)`當成類似"資源回收桶"的概念，確認內容確實是不需要的後手動刪除
     - 這麼做的原因是判斷可能有誤判的可能性
-- If a Wallapaer has be accidentally move to `Removed` folder, you can move it manually to the `Backups` folder
 - 若有壁紙被誤判斷移動到`移除 (Removed)`資料夾中，你可以手動的移動到`備份 (Backups)`資料夾中以復原壁紙，反過來也是
     
 ---
 ## 腳本流程
 1. 腳本會在背景執行
 2. 定時性的確認`Wallpaper Engine介面`使否開啟，(預設每5秒檢查一次)
-3. if it found tha Wallpaper Engine UI is running
-4. 若發現`Wallpaper Engine介面`啟動後
+3. 若發現`Wallpaper Engine介面`啟動後
    1. 比對`硬連結 (Hard Link)`和`Steam Workshop下載`中的壁紙，是否有卻失
       1. 若發現缺失則會將壁紙移動到`備份 (Backups)`資料夾中
       2. 然後將`備份 (Backups)`資料夾中的壁紙匯入到Wallpaper engiene內
@@ -81,7 +81,7 @@ https://help.wallpaperengine.io/zh-tw/steam/backup.html
          1. 比對`硬連結 (Hard Link)`和`Steam Workshop下載`中的壁紙，是否有卻失
             1. 若發現缺失則會將壁紙移動到`移除 (Removed)`資料夾中
          2. 對`Steam Workshop下載`中的壁紙進行`硬連結 (Hard Link copy)`備份到`硬連結 (Hard links)`資料夾中
-5. 循環
+4. 循環
 
 `倒數計時`的原應是給Steam足夠的時間刪除最近下載然後立刻刪除的壁紙，因為使用者可能下載壁紙後發現不喜歡力可刪除。
 
@@ -95,28 +95,23 @@ https://help.wallpaperengine.io/zh-tw/steam/backup.html
 2. 將exe存放在資料夾中然猴執行，有些生成某些檔案
    1. 其中會有個`config.ini`，這檔案是設定黨，用來調適功能的。
    2. 若你的Wallpaper Engine 不是安裝在預設的安裝位址，你會需要選取對應的自位置
-      1. you may still need to edit `config.ini` if your Wallpaper Enging and or Steam is not installed in the default location
-      2. 你可能還會需要到`config.ini`進行額外的確認
-   3. where are you want to backup your wallpapers, or use the default location
-   4. 你對被詢存防備份檔案的位置或使用預設位置
+      1. 你可能還會需要到`config.ini`進行額外的確認
+   3. 你對被詢存防備份檔案的位置或使用預設位置
       - ( User\USER_NAME\Steam Workshop Backup\Wallpaper Engine\ )
       - **必須與`Steam Workshop下載`在同一碟上**
 3. 你詢問您是否希望腳本在啟動時運行
    - 可以之後手動啟用`啟動時運行`
-4. after confirming these configurations are correct, execute the exe again
-5. 確認`config.ini`設定正確後，再度執行exe
-6. 腳本將在背景執行，更多資訊參考`腳本流程`
+4. 確認`config.ini`設定正確後，再度執行exe
+5. 腳本將在背景執行，更多資訊參考`腳本流程`
 
 ### Advance mode
 下載
 1. 複製整個repository
-2. 記得要也要複製子模組(sub-modules)
-3. 若要自動化請安裝AutoHotkey
+2. 若要自動化請安裝AutoHotkey
    
 自動模式
 - 使用AutoHotkey執行`Wallpaper Engine - Hard Links Backup.ahk`
   - 腳本會立刻在背景執行不會進行設定/確認`config.ini`是否正確
-    - if you only intend to use it automated, I recommend to just use the released exe
     - 如果你只打算這使用不進行修改，建議使用發布的exe
     - 
 手動執行
@@ -129,23 +124,18 @@ https://help.wallpaperengine.io/zh-tw/steam/backup.html
 ## Steam Workshop 和 Wallpaper Engine behaviors 觀察
 1. Steam 在任何時候都可以下載workshop當按
 2. Steam 只會在`Wallpaper Engine介面`非執行時刪除檔案
-3. user can Subscribed to Wallpapers using Wallpaper Enging UI
-4. 使用者使用`Wallpaper Engine介面`訂閱壁紙時，壁紙會被立刻下載
-5. user can Unsubscribed to Wallpapers using Wallpaper Enging UI
-6. 使用者使用`Wallpaper Engine介面`退訂壁紙時，退訂的壁紙要等`Wallpaper Engine介面`關閉後才會被Steam刪除
+3. 使用者使用`Wallpaper Engine介面`訂閱壁紙時，壁紙會被立刻下載
+4. 使用者使用`Wallpaper Engine介面`退訂壁紙時，退訂的壁紙要等`Wallpaper Engine介面`關閉後才會被Steam刪除
 ---
 
 ## 警告
 - 此腳本是設計給使用NTFS檔案系統的Windows電腦
   - 大部分使用Wallpaper Engine的電腦依該都適用
-- Even though I use the term **Backup**, This is not truly a Backup Tool
 - 我曾在上面多次使用的到**`備份 或 Backup`**但這個不是個真正的備份工具
   - 這部不會對數據丟失有任何保護
   - 你的黨案只存在有一份
   
-- Steam could changed the methid of deleting files
 - Steam可能改變它們刪除檔案的方式
-  - there are methods of deleting files that can delete files with multiple Hard Links
   - 某些刪除方式可以完全刪除掉有多硬連結的檔案
   - 如果Steam使用了改種類的刪除方式，此項目將會完全無用
 
