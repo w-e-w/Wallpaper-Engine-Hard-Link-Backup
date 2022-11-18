@@ -22,31 +22,37 @@ If (enable_tray_icon){
 }
 
 ; start monitoring wallppaper engine
-cheak_wpe_ui_exist()
+DllCall("RegisterShellHookWindow", "ptr", A_ScriptHwnd)
+global MsgNumber
+MsgNumber := DllCall("RegisterWindowMessage", "Str", "SHELLHOOK")
+OnMessage(MsgNumber , "cheak_wpe_ui_exist")
 Return
 
-cheak_wpe_ui_exist(){
-    if WinExist("ahk_exe"wallpaper_engine_ui32_path) {
-        SetTimer, after_wpe_ui_exit, Off
-        FileGetTime, t1 , %wallpaper_backups%
-        RunWaitPsScript("Wallpaper Engine module\Move Wallpapers in [HardLinks] except [Workshop] to [Backups] and Import [Backups].ps1", , Log_path)
-        FileGetTime, t2 , %wallpaper_backups%
-        if (enable_wallpaper_restored_msg and (t1-t2))
-            SetTimer, msg_restored, -1
-        WinWaitClose, ahk_exe %wallpaper_engine_ui32_path%
-        SetTimer, after_wpe_ui_exit, % -exit_execution_delay
+cheak_wpe_ui_exist(wParam, lParam)
+{
+    If (wParam = 1){
+        WinGet, ProcessPath, ProcessPath, ahk_id %lParam%
+        If (ProcessPath = wallpaper_engine_ui32_path) {
+            SetTimer, after_wpe_ui_exit, Off
+            FileGetTime, t1 , %wallpaper_backups%
+            RunWaitPsScript("Wallpaper Engine module\Move Wallpapers in [HardLinks] except [Workshop] to [Backups] and Import [Backups].ps1", , Log_path)
+            FileGetTime, t2 , %wallpaper_backups%
+            if (enable_wallpaper_restored_msg and (t1-t2))
+                SetTimer, msg_restored, -1
+            WinWaitClose, ahk_exe %wallpaper_engine_ui32_path%
+            SetTimer, after_wpe_ui_exit, % -exit_execution_delay
+        }
     }
-    SetTimer, cheak_wpe_ui_exist , % -monitor_period
 }
 
 after_wpe_ui_exit(){
-    SetTimer, cheak_wpe_ui_exist, Off
+    OnMessage(MsgNumber, "")
     FileGetTime, t1 , %trash%
     RunWaitPsScript("Wallpaper Engine module\Move Wallpapers in [HardLinks] except [Workshop] to [Removed] and Update [HardLinks].ps1", , Log_path)
     FileGetTime, t2 , %trash%
     if (enable_wallpaper_removed_msg and (t1 != t2))
         SetTimer, msg_removed, -1
-    SetTimer, cheak_wpe_ui_exist , % -monitor_period
+    OnMessage(MsgNumber, "cheak_wpe_ui_exist")
 }
 
 msg_restored(){
