@@ -141,3 +141,7 @@ it's all up to you
 
 - this tool is not designed for you to keep multiple versions of wallpaper
   - even though under some conditions it will do so
+
+## Changelog
+## 2.0
+ - add Next wallpaper while idle

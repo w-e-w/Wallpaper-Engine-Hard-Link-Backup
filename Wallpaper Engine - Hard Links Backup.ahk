@@ -26,6 +26,9 @@ DllCall("RegisterShellHookWindow", "ptr", A_ScriptHwnd)
 global MsgNumber
 MsgNumber := DllCall("RegisterWindowMessage", "Str", "SHELLHOOK")
 OnMessage(MsgNumber , "cheak_wpe_ui_exist")
+if (enable_next_wallpaper){
+    SetTimer, check_idel, % -change_interval
+}
 Return
 
 cheak_wpe_ui_exist(wParam, lParam)
@@ -62,3 +65,5 @@ msg_restored(){
 msg_removed(){
     MsgBox, , , % removed_msg trash, 60
 }
+
+#Include, next wallpaper when idle.ahk

@@ -30,3 +30,31 @@ removed_msg := RegExReplace(removed_msg, "(?<!(``))``n" , "`n")
 
 global enable_tray_icon
 IniRead, enable_tray_icon, config.ini, ahk_automation, enable_tray_icon
+
+; next wallpaper
+global enable_next_wallpaper
+IniRead, enable_next_wallpaper, config.ini, ahk_automation, enable_next_wallpaper
+
+global wallpaper_engine_exe_dir
+IniRead, wallpaper_engine_exe_dir, config.ini, ahk_automation, wallpaper_engine_exe_dir
+wallpaper_engine_exe_dir := PathResolveEnv(wallpaper_engine_exe_dir)
+
+global wallpaper64
+IniRead, wallpaper64, config.ini, ahk_automation, wallpaper64
+global wallpaper_engine_exe_path
+if wallpaper64
+    wallpaper_engine_exe_path := wallpaper_engine_exe_dir "/wallpaper64.exe"
+else
+    wallpaper_engine_exe_path := wallpaper_engine_exe_dir "/wallpaper.exe"
+
+global idle_time_require
+IniRead, idle_time_require, config.ini, ahk_automation, idle_time_require
+idle_time_require := PathResolveEnv(idle_time_require)
+
+global idle_check_interval
+IniRead, idle_check_interval, config.ini, ahk_automation, idle_check_interval
+idle_check_interval := PathResolveEnv(idle_check_interval)
+
+global change_interval
+IniRead, change_interval, config.ini, ahk_automation, change_interval
+change_interval := PathResolveEnv(change_interval)
