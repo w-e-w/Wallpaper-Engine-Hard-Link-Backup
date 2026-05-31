@@ -1,8 +1,8 @@
 ﻿; load configs.ini
 
-global wallpaper_engine_ui32_path
-IniRead, wallpaper_engine_ui32_path, config.ini, ahk_automation, wallpaper_engine_ui32_path
-wallpaper_engine_ui32_path := PathResolveEnv(wallpaper_engine_ui32_path)
+global wallpaper_engine_ui_path
+IniRead, wallpaper_engine_ui_path, config.ini, ahk_automation, wallpaper_engine_ui_path
+wallpaper_engine_ui_path := PathResolveEnv(wallpaper_engine_ui_path)
 global exit_execution_delay
 IniRead, exit_execution_delay, config.ini, ahk_automation, exit_execution_delay
 global Log_path

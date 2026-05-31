@@ -35,14 +35,14 @@ cheak_wpe_ui_exist(wParam, lParam)
 {
     If (wParam = 1){
         WinGet, ProcessPath, ProcessPath, ahk_id %lParam%
-        If (ProcessPath = wallpaper_engine_ui32_path) {
+        If (ProcessPath = wallpaper_engine_ui_path) {
             SetTimer, after_wpe_ui_exit, Off
             FileGetTime, t1 , %wallpaper_backups%
             RunWaitPsScript("Wallpaper Engine module\Move Wallpapers in [HardLinks] except [Workshop] to [Backups] and Import [Backups].ps1", , Log_path)
             FileGetTime, t2 , %wallpaper_backups%
             if (enable_wallpaper_restored_msg and (t1-t2))
                 SetTimer, msg_restored, -1
-            WinWaitClose, ahk_exe %wallpaper_engine_ui32_path%
+            WinWaitClose, ahk_exe %wallpaper_engine_ui_path%
             SetTimer, after_wpe_ui_exit, % -exit_execution_delay
         }
     }

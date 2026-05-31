@@ -17,12 +17,12 @@ if (FileExist(workshop_content_431960) != "D"){
     }
 }
 
-IniRead, wallpaper_engine_ui32, config.ini, ahk_automation, wallpaper_engine_ui32_path
-wallpaper_engine_ui32 := PathResolveEnv(wallpaper_engine_ui32)
-if (Not FileExist(wallpaper_engine_ui32)){
-    FileSelectFile, wallpaper_engine_ui32 , Options, , select wallpaper_engine\bin\ui32.exe, *.exe
+IniRead, wallpaper_engine_ui, config.ini, ahk_automation, wallpaper_engine_ui_path
+wallpaper_engine_ui := PathResolveEnv(wallpaper_engine_ui)
+if (Not FileExist(wallpaper_engine_ui)){
+    FileSelectFile, wallpaper_engine_ui , Options, , select wallpaper_engine\bin\wallpaperui.exe, *.exe
     if (Not ErrorLevel){
-        IniWrite, "%wallpaper_engine_ui32%", config.ini, ahk_automation, wallpaper_engine_ui32_path
+        IniWrite, "%wallpaper_engine_ui%", config.ini, ahk_automation, wallpaper_engine_ui_path
     }
 }
 

@@ -1,7 +1,7 @@
 ﻿; check if need update
 if A_IsCompiled {
     if FileExist("config.ini") {
-        current_version := "2.0"
+        current_version := "2.1"
         IniRead, ini_version, config.ini, ahk_automation, version
         if (current_version != ini_version){
             ; using a different version
